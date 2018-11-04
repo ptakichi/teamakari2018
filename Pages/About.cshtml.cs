@@ -12,7 +12,7 @@ namespace teamakari2018.Pages
 
         public void OnGet()
         {
-            Message = "ようこそ！";
+            Message = "Your application description page.";
         }
     }
 }
