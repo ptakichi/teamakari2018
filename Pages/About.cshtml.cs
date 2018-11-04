@@ -12,7 +12,7 @@ namespace teamakari2018.Pages
 
         public void OnGet()
         {
-            Message = "Connect 2018 in Koriyama, with UDC （ハッカソン） チームあかり<br>https://www.techno-media.net6.or.jp/newmedia/human/1474";
+            Message = "ようこそ！";
         }
     }
 }
