@@ -12,8 +12,9 @@
   <table width="100%">
     <tr>
       <td></td>
-      <td><h1 style="font-weight:500;">Microsoft Cognitive Services Speech SDK JavaScript Quickstart</h1></td>
+      <td><h1 style="font-weight:500;">振り込め詐欺キーワード検索【仮】</h1></td>
     </tr>
+    <!--
     <tr>
       <td align="right"><a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started" target="_blank">Subscription</a>:</td>
       <td><input id="subscriptionKey" type="text" size="40" value="a379dbbb3eaf4aad907ac43bbc7558bf"></td>
@@ -22,12 +23,13 @@
       <td align="right">Region</td>
       <td><input id="regionKey" type="text" size="40" value="southeastasia"></td>
     </tr>
+    -->
     <tr>
       <td></td>
-      <td><button id="startRecognizeOnceAsyncButton">Start recognition</button></td>
+      <td><button id="startRecognizeOnceAsyncButton">詐欺診断開始</button></td>
     </tr>
     <tr>
-      <td align="right" valign="top">Results</td>
+      <td align="right" valign="top">音声内容</td>
       <td><textarea id="phraseDiv" style="display: inline-block;width:500px;height:200px"></textarea></td>
     </tr>
   </table>
@@ -51,24 +53,30 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     startRecognizeOnceAsyncButton = document.getElementById("startRecognizeOnceAsyncButton");
-    subscriptionKey = document.getElementById("subscriptionKey");
-    regionKey = document.getElementById("regionKey");
+//    subscriptionKey = document.getElementById("subscriptionKey");
+//    regionKey = document.getElementById("regionKey");
+    subscriptionKey = "a379dbbb3eaf4aad907ac43bbc7558bf"
+    regionKey = "southeastasia";
+      
     phraseDiv = document.getElementById("phraseDiv");
+    phraseDiv.innerHTML = "";
 
     startRecognizeOnceAsyncButton.addEventListener("click", function () {
       startRecognizeOnceAsyncButton.disabled = true;
-      phraseDiv.innerHTML = "";
+//      phraseDiv.innerHTML = "";
 
       // if we got an authorization token, use the token. Otherwise use the provided subscription key
       var speechConfig;
       if (authorizationToken) {
-        speechConfig = SpeechSDK.SpeechConfig.fromAuthorizationToken(authorizationToken, regionKey.value);
+//        speechConfig = SpeechSDK.SpeechConfig.fromAuthorizationToken(authorizationToken, regionKey.value);
+        speechConfig = SpeechSDK.SpeechConfig.fromAuthorizationToken(authorizationToken, regionKey);
       } else {
-        if (subscriptionKey.value === "" || subscriptionKey.value === "subscription") {
+        if (subscriptionKey === "" || subscriptionKey.value === "subscription") {
           alert("Please enter your Microsoft Cognitive Services Speech subscription key!");
           return;
         }
-        speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey.value, regionKey.value);
+//        speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey.value, regionKey.value);
+        speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey, regionKey);
       }
 
       speechConfig.speechRecognitionLanguage = "ja-JP";
@@ -78,7 +86,7 @@
       recognizer.recognizeOnceAsync(
         function (result) {
           startRecognizeOnceAsyncButton.disabled = false;
-          phraseDiv.innerHTML += result.text;
+          phraseDiv.innerHTML += result.text + "\n";
           window.console.log(result);
 
           recognizer.close();
@@ -86,7 +94,7 @@
         },
         function (err) {
           startRecognizeOnceAsyncButton.disabled = false;
-          phraseDiv.innerHTML += err;
+          phraseDiv.innerHTML += err + "\n";
           window.console.log(err);
 
           recognizer.close();
