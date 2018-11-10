@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,19 +9,26 @@ using System.Web;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 
+
 namespace teamakari2018.Pages
 {
-    public class UploadModel : PageModel
+    public class UploadController : Controller
     {
-        public void OnGet()
+
+         
+        public ActionResult OnGet()
         {
-            
+            UploadModel model = new UploadModel();
+            return View("Upload", model);
         }
 
     
         [HttpPost]
         [RequestSizeLimit(100000000)]
-        public void OnPost(IFormFile uploadFile){
+        public ActionResult OnPost(IFormFile uploadFile){
+
+            UploadModel model = new UploadModel();
+
             if (uploadFile != null) {
                 Console.Write("\n\n\n\n\n\n\n==================\n");
                 Console.Write("FileName: {0}",uploadFile.FileName);//Gets the file name from the Content-Disposition header.
@@ -38,12 +45,17 @@ namespace teamakari2018.Pages
                     uploadFile.CopyToAsync(stream).Wait();
                 }
 
+                string resultMessage = "";
+
                 Anaryze an = new Anaryze();
                 an.TranslationWithFileAsync( uploadfilePath,resultMessage).Wait();
+
+                model.resultMessage = resultMessage;
             }
+
+            return View("Upload", model);
         }
 
-        public string resultMessage {get;set;} = "音声ファイルをアップロードしてください";
 
     }
 }
