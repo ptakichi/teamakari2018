@@ -10,6 +10,30 @@
       <td></td>
       <td><h1 style="font-weight:500;">振り込め詐欺音声アップロード【仮】</h1></td>
     </tr>
+    
+    <tr>
+        <td></td>
+        <td><h1 style="font-weight:500;">TEST2</h1>
+             @*
+              Html.BeginForm(
+                "(サブミット先のアクション)",
+                "(コントローラー名)",
+                [ルートパラメーター(URLにパラメータが追加されます)],
+                [アクション POST/GET],
+                [その他の属性]
+              )) {
+                [フォームの中身]
+              } *@
+
+              <form method="post" enctype="multipart/form-data" asp-controller="Test" asp-action="Index">         
+                <input type="file" name="uploadFile" />
+                <input type="submit" value="アップロード" />
+             </form>
+        </td>
+    </tr>
+
+
+
     <tr>
       <td></td>
       <td><button id="startRecognizeOnceAsyncButton">詐欺診断開始</button></td>
