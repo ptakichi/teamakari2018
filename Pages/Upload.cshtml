@@ -1,0 +1,23 @@
+﻿@page
+@model UploadModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div id="content">
+  <table width="100%">
+    <tr>
+      <td></td>
+      <td><h1 style="font-weight:500;">振り込め詐欺音声アップロード【仮】</h1></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button id="startRecognizeOnceAsyncButton">詐欺診断開始</button></td>
+    </tr>
+    <tr>
+      <td align="right" valign="top">音声内容</td>
+      <td><textarea id="phraseDiv" style="display: inline-block;width:500px;height:200px"></textarea></td>
+    </tr>
+  </table>
+</div>
+
