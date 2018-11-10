@@ -41,6 +41,12 @@ namespace teamakari2018.Pages
                 Anaryze an = new Anaryze();
                 an.TranslationWithFileAsync( uploadfilePath,resultMessage).Wait();
             }
+            else{
+                Console.Write("\n\n\n\n\n\n\n==================\n");
+                Console.Write("File not found");
+                Console.Write("\n==================\n\n\n\n\n\n");
+            }
+
         }
 
         public string resultMessage {get;set;} = "音声ファイルをアップロードしてください";

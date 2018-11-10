@@ -6,42 +6,40 @@
 
 <div id="content">
   <table width="100%">
+    <br>
     <tr>
-      <td></td>
-      <td><h1 style="font-weight:500;">振り込め詐欺音声アップロード【仮】</h1></td>
-    </tr>
-    
-    <tr>
-        <td></td>
-        <td><h1 style="font-weight:500;">TEST2</h1>
-             @*
-              Html.BeginForm(
-                "(サブミット先のアクション)",
-                "(コントローラー名)",
-                [ルートパラメーター(URLにパラメータが追加されます)],
-                [アクション POST/GET],
-                [その他の属性]
-              )) {
-                [フォームの中身]
-              } *@
+      <td><h1 style="font-weight:500;">振り込め詐欺音声診断アプリ   ---ダマサレン---</h1></td>
+      <img src="Pages\logo.png" alt = "logo">
+      </tr>
 
+    <tr>
+        <td><br>
               <form method="post" enctype="multipart/form-data" asp-controller="Test" asp-action="Index">         
                 <input type="file" name="uploadFile" />
-                <input type="submit" value="アップロード" />
+                <input type="submit" value="詐欺診断開始" />
              </form>
         </td>
     </tr>
+  </table>
 
-
-
+  <br>
+   <table>
     <tr>
+      <td valign="top">音声内容</td>
       <td></td>
-      <td><button id="startRecognizeOnceAsyncButton">詐欺診断開始</button></td>
+      <td valign="top">主なキーフレーズ</td>
     </tr>
+    
     <tr>
-      <td align="right" valign="top">音声内容</td>
-      <td><textarea id="phraseDiv" style="display: inline-block;width:500px;height:200px">@Model.resultMessage</textarea></td>
+      <td><textarea id="phraseDiv" style="display: inline-block;width:500px;height:300px"></textarea></td>
+      <td>　　　　　　</td>
+      <td valign="top"><textarea id="keyPrase" style="display: inline-block;width:500px;height:300px"></textarea>
+    </tr>
+
+     <tr>
+      <td></td>
+      <td></td>
+      <td align="right" valign="top"><button type="button" name="report" value="report"><font size="5">警察に相談</font></button></td>
     </tr>
   </table>
 </div>
-
